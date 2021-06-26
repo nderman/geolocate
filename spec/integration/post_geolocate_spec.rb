@@ -42,7 +42,7 @@ RSpec.describe("/geolocate", type: :request) do
         expect(response).to(have_http_status(:ok))
       end
 
-      it "returns mwp products for the query" do
+      it "returns location data for the query" do
         expect(response.body).to(eq(location.to_json))
       end
     end
