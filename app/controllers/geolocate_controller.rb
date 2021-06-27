@@ -5,6 +5,8 @@ class GeolocateController < ApplicationController
     render(json: location)
   end
 
+  private
+
   def apscan_params
     params.permit(apscan_data: [:band, :bssid, :channel, :frequency, :rates, :rssi, :security, :ssid, :timestamp,
                                 :vendor, :width])
