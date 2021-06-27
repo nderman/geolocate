@@ -2,7 +2,7 @@
 class GeolocateController < ApplicationController
   def locate
     location = GeolocationApi.new.geolocate(apscan_params.to_h["apscan_data"])
-    render(json: location)
+    render json: location, status: :ok
   end
 
   private

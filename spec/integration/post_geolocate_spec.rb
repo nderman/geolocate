@@ -43,7 +43,7 @@ RSpec.describe("/geolocate", type: :request) do
       end
 
       it "returns location data for the query" do
-        expect(response.body).to(eq(location.to_json))
+        expect(response.body).to(eql(location.to_json))
       end
     end
   end

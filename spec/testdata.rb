@@ -144,52 +144,52 @@ module TestData
         {
           "macAddress" => "9c:b2:b2:66:c1:be",
           "channel" => "5",
-          "signalStrength" => -35,
+          "signalStrength" =>"-35",
         },
         {
           "macAddress" => "84:78:ac:b9:76:19",
           "channel" => "1",
-          "signalStrength" => -56,
+          "signalStrength" =>"-56",
         },
         {
           "macAddress" => "c0:a0:bb:c4:10:d6",
           "channel" => "1",
-          "signalStrength" => -66,
+          "signalStrength" =>"-66",
         },
         {
           "macAddress" => "84:78:ac:b9:76:16",
           "channel" => "56",
-          "signalStrength" => -82,
+          "signalStrength" =>"-82",
         },
         {
           "macAddress" => "e8:1d:a8:28:a6:6c",
           "channel" => "36",
-          "signalStrength" => -65,
+          "signalStrength" =>"-65",
         },
         {
           "macAddress" => "e8:1d:a8:28:a6:68",
           "channel" => "8",
-          "signalStrength" => -52,
+          "signalStrength" =>"-52",
         },
         {
           "macAddress" => "e8:1d:a8:68:a6:68",
           "channel" => "8",
-          "signalStrength" => -53,
+          "signalStrength" =>"-53",
         },
         {
           "macAddress" => "84:78:ac:b9:76:1a",
           "channel" => "1",
-          "signalStrength" => -57,
+          "signalStrength" =>"-57",
         },
         {
           "macAddress" => "84:78:ac:b9:76:15",
           "channel" => "56",
-          "signalStrength" => -82,
+          "signalStrength" =>"-82",
         },
         {
           "macAddress" => "e8:1d:a8:68:a6:6c",
           "channel" => "36",
-          "signalStrength" => -66,
+          "signalStrength" =>"-66",
         },
       ],
     }

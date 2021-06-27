@@ -13,13 +13,19 @@ RSpec.describe(GeolocationApi) do
       end
 
       it "calls api with parsed data" do
-        expect(a_request(:post, "www.example.com")
+        stub = stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
         .with(
           headers: {
             "Content-Type" => "application/json",
           },
           body: ap_data.to_json
-        )).to(have_been_made.once)
+        )
+        .to_return(
+          status: 200,
+          body: location.to_json
+        )
+        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        expect(stub).to have_been_requested
       end
     end
   end

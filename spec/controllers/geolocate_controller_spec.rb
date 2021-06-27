@@ -29,7 +29,7 @@ RSpec.describe(GeolocateController, type: :controller) do
         expect(response.status).to(eq(200))
       end
 
-      it "returns the products on success for query" do
+      it "returns the location on success for query" do
         allow(GeolocationApi).to(receive(:new).and_return(@double_geolocation_api))
         allow(@double_geolocation_api).to(receive(:geolocate).with(scan_params["apscan_data"]).and_return(TestData.location))
         post :locate, params: scan_params
