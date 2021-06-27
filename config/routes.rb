@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  post "/geolocate" => "geolocate#locate", :as => :geolocate
+  post "/geolocate", to: "geolocate#locate"
 end
