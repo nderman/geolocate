@@ -4,9 +4,9 @@ require "rails_helper"
 require "webmock/rspec"
 
 RSpec.describe("/geolocate", type: :request) do
-  #   before(:each) do
-  #     allow_any_instance_of(ApplicationController).to(receive(:require_valid_token).and_return(true))
-  #   end
+    before(:each) do
+      allow_any_instance_of(ApplicationController).to(receive(:require_api_key).and_return(true))
+    end
   # memory store is per process and therefore no conflicts in parallel tests
   let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
   let(:cache) { Rails.cache }

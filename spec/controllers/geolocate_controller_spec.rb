@@ -2,9 +2,9 @@
 require "rails_helper"
 
 RSpec.describe(GeolocateController, type: :controller) do
-  #   before(:each) do
-  #     allow(controller).to(receive(:require_valid_token).and_return(true))
-  #   end
+    before(:each) do
+      allow(controller).to(receive(:require_api_key).and_return(true))
+    end
 
   describe "#locate" do
     before do

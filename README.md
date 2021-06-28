@@ -25,11 +25,11 @@ Things you may want to cover:
 
 
 ## TODOS
-* Load secrets from env variables
-* auth
-* dockerize
-* update readme
+- [x] Load secrets from env variables
+- [x] auth
+- [ ] dockerize
+- [ ] update readme
     * running tests
     * running app
-* error handling
-* "sad day" tests
+- [ ] error handling
+- [ ] "sad day" tests
