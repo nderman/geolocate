@@ -3,6 +3,15 @@ require "rails_helper"
 require "webmock/rspec"
 
 RSpec.describe(GeolocationApi) do
+  # memory store is per process and therefore no conflicts in parallel tests
+  let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
+  let(:cache) { Rails.cache }
+
+  before do
+    allow(Rails).to(receive(:cache).and_return(memory_store))
+    Rails.cache.clear
+  end
+
   describe "#geolocate" do
     context "When making a successful call to google geolocate with valid input data" do
       let(:scan_data) do
@@ -11,21 +20,131 @@ RSpec.describe(GeolocationApi) do
       let(:ap_data) do
         TestData.ap_data
       end
+      let(:location) do
+        TestData.location
+      end
 
       it "calls api with parsed data" do
         stub = stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
-        .with(
-          headers: {
-            "Content-Type" => "application/json",
-          },
-          body: ap_data.to_json
-        )
-        .to_return(
-          status: 200,
-          body: location.to_json
-        )
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
         GeolocationApi.new.geolocate(scan_data["apscan_data"])
-        expect(stub).to have_been_requested
+        expect(stub).to(have_been_requested)
+      end
+    end
+
+    context "With similar access point data" do
+      let(:scan_data) do
+        {
+          "apscan_data" => [
+            {
+              "bssid" => "one",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "two",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "three",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "four",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "five",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+          ],
+        }
+      end
+      let(:scan_data_similar) do
+        {
+          "apscan_data" => [
+            {
+              "bssid" => "one",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "two",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "four",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "five",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+          ],
+        }
+      end
+      let(:ap_data) do
+        {
+          "wifiAccessPoints" => [
+            {
+              "macAddress" => "one",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "two",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "three",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "four",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "five",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+          ],
+        }
+      end
+      it "calls the cache instead of API when threshold is met" do
+        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
+        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
+        GeolocationApi.new.geolocate(scan_data_similar["apscan_data"])
       end
     end
   end
