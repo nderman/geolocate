@@ -22,3 +22,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## TODOS
+* Load secrets from env variables
+* auth
+* dockerize
+* update readme
+    * running tests
+    * running app
+* error handling
+* "sad day" tests

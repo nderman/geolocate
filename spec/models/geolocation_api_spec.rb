@@ -7,6 +7,9 @@ RSpec.describe(GeolocationApi) do
   let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
   let(:cache) { Rails.cache }
 
+  let(:api_url) {ENV["API_URL"]}
+  let(:secret) {ENV["SECRET_KEY"]}
+
   before do
     allow(Rails).to(receive(:cache).and_return(memory_store))
     Rails.cache.clear
@@ -25,7 +28,7 @@ RSpec.describe(GeolocationApi) do
       end
 
       it "calls api with parsed data" do
-        stub = stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+        stub = stub_request(:post, api_url+secret)
           .with(
             headers: {
               "Content-Type" => "application/json",
@@ -198,8 +201,8 @@ RSpec.describe(GeolocationApi) do
         }
       end
 
-      it "calls the cache instead of API when missing APs, but threshold is met" do
-        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+      it "calls the cache instead of API when missing APs, but threshold (0.8 for test) is met" do
+        stub_request(:post, api_url+secret)
           .with(
             headers: {
               "Content-Type" => "application/json",
@@ -215,8 +218,8 @@ RSpec.describe(GeolocationApi) do
         described_class.new.geolocate(scan_data_similar["apscan_data"])
       end
 
-      it "calls the cache instead of API when additional APs, but threshold is met" do
-        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+      it "calls the cache instead of API when additional APs, but threshold (0.8 for test) is met" do
+        stub_request(:post, api_url+secret)
           .with(
             headers: {
               "Content-Type" => "application/json",
@@ -232,8 +235,8 @@ RSpec.describe(GeolocationApi) do
         described_class.new.geolocate(scan_data_similar_2["apscan_data"])
       end
 
-      it "calls the cache instead of API when additional APs, but threshold is met" do
-        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+      it "calls the cache instead of API when additional APs, but threshold (0.8 for test) is met" do
+        stub_request(:post, api_url+secret)
           .with(
             headers: {
               "Content-Type" => "application/json",
@@ -250,7 +253,7 @@ RSpec.describe(GeolocationApi) do
       end
     end
 
-    context "With similar access point data that doesn't meet threshold" do
+    context "With similar access point data that doesn't meet threshold (0.8 for test)" do
       let(:scan_data) do
         {
           "apscan_data" => [
@@ -376,8 +379,8 @@ RSpec.describe(GeolocationApi) do
         }
       end
 
-      it "calls the API when cache threshold no met" do
-        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+      it "calls the API when cache threshold (0.8 for test) not met" do
+        stub_request(:post, api_url+secret)
           .with(
             headers: {
               "Content-Type" => "application/json",
@@ -388,7 +391,7 @@ RSpec.describe(GeolocationApi) do
             status: 200,
             body: location.to_json
           )
-        stub2 = stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+        stub2 = stub_request(:post, api_url+secret)
           .with(
             headers: {
               "Content-Type" => "application/json",

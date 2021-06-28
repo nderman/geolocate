@@ -3,9 +3,9 @@ require "faraday"
 
 class GeolocationApi
   def initialize
-    @url = "https://www.googleapis.com/geolocation/v1/geolocate?key="
-    @key = "secret" # TODO: move to env variable
-    @cache_threshold = 0.8
+    @url = ENV["API_URL"]
+    @key = ENV["SECRET_KEY"]
+    @cache_threshold = ENV["CACHE_THRESHOLD"].to_f
   end
 
   def geolocate(scan_data)
