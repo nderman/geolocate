@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-06-28T21:38:46+02:00">2021-06-28T21:38:46+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-06-28T21:54:41+02:00">2021-06-28T21:54:41+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -117,7 +117,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#78cb45b51af20750804f0bc78f0712676ceb25f3" class="src_link" title="spec/models/geolocation_api_spec.rb">spec/models/geolocation_api_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">404</td>
+            <td class="cell--number">408</td>
             <td class="cell--number">61</td>
             <td class="cell--number">61</td>
             <td class="cell--number">0</td>
@@ -644,7 +644,7 @@
 
             
 
-            <code class="ruby">      Rails.cache.write(key_arr.join(&#39;,&#39;), location)</code>
+            <code class="ruby">      Rails.cache.write(key_arr.join(&quot;,&quot;), location)</code>
           </li>
         </div>
       
@@ -2257,7 +2257,7 @@
 
             
 
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
+            <code class="ruby">        described_class.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
           </li>
         </div>
       
@@ -4022,546 +4022,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="200">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &quot;calls the cache instead of API when missing APs, but threshold is met&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="201">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="202">
-            
-            
-
-            
-
-            <code class="ruby">          .with(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="203">
-            
-            
-
-            
-
-            <code class="ruby">            headers: {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="204">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="205">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="206">
-            
-            
-
-            
-
-            <code class="ruby">            body: ap_data.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="207">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="208">
-            
-            
-
-            
-
-            <code class="ruby">          .to_return(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="209">
-            
-            
-
-            
-
-            <code class="ruby">            status: 200,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="210">
-            
-            
-
-            
-
-            <code class="ruby">            body: location.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="211">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="212">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="213">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(Rails.cache).to(receive(:read)).with(&quot;one,two,three,four,five&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="214">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data_similar[&quot;apscan_data&quot;])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="215">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="216">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &quot;calls the cache instead of API when additional APs, but threshold is met&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="217">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="218">
-            
-            
-
-            
-
-            <code class="ruby">          .with(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="219">
-            
-            
-
-            
-
-            <code class="ruby">            headers: {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="220">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="221">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="222">
-            
-            
-
-            
-
-            <code class="ruby">            body: ap_data.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="223">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="224">
-            
-            
-
-            
-
-            <code class="ruby">          .to_return(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="225">
-            
-            
-
-            
-
-            <code class="ruby">            status: 200,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="226">
-            
-            
-
-            
-
-            <code class="ruby">            body: location.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="227">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="228">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="229">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(Rails.cache).to(receive(:read)).with(&quot;one,two,three,four,five&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="230">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data_similar_2[&quot;apscan_data&quot;])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="231">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="232">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &quot;calls the cache instead of API when additional APs, but threshold is met&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="233">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="234">
-            
-            
-
-            
-
-            <code class="ruby">          .with(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="235">
-            
-            
-
-            
-
-            <code class="ruby">            headers: {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="236">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="237">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="238">
-            
-            
-
-            
-
-            <code class="ruby">            body: ap_data.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="239">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="240">
-            
-            
-
-            
-
-            <code class="ruby">          .to_return(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="241">
-            
-            
-
-            
-
-            <code class="ruby">            status: 200,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="242">
-            
-            
-
-            
-
-            <code class="ruby">            body: location.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="243">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="244">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="245">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(Rails.cache).to(receive(:read)).with(&quot;one,two,three,four,five&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="246">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data_similar_3[&quot;apscan_data&quot;])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="247">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="248">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="249">
+          <li class="never" data-hits="" data-linenumber="200">
             
             
 
@@ -4572,1393 +4033,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="250">
+          <li class="covered" data-hits="1" data-linenumber="201">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    context &quot;With similar access point data that doesn&#39;t meet threshold&quot; do</code>
+            <code class="ruby">      it &quot;calls the cache instead of API when missing APs, but threshold is met&quot; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="251">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      let(:scan_data) do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="252">
-            
-            
-
-            
-
-            <code class="ruby">        {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="253">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">          &quot;apscan_data&quot; =&gt; [</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="254">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="255">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;one&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="256">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="257">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="258">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="259">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="260">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;two&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="261">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="262">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="263">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="264">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="265">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;three&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="266">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="267">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="268">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="269">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="270">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;four&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="271">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="272">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="273">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="274">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="275">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;five&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="276">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="277">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="278">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="279">
-            
-            
-
-            
-
-            <code class="ruby">          ],</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="280">
-            
-            
-
-            
-
-            <code class="ruby">        }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="281">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="282">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      let(:scan_data_similar) do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="283">
-            
-            
-
-            
-
-            <code class="ruby">        {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="284">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">          &quot;apscan_data&quot; =&gt; [</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="285">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="286">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;one&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="287">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="288">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="289">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="290">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="291">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;two&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="292">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="293">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="294">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="295">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="296">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;not_three&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="297">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="298">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="299">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="300">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="301">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;not_four&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="302">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="303">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="304">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="305">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="306">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;five&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="307">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="308">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="309">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="310">
-            
-            
-
-            
-
-            <code class="ruby">          ],</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="311">
-            
-            
-
-            
-
-            <code class="ruby">        }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="312">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="313">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      let(:ap_data) do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="314">
-            
-            
-
-            
-
-            <code class="ruby">        {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="315">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">          &quot;wifiAccessPoints&quot; =&gt; [</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="316">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="317">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;one&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="318">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="319">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="320">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="321">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="322">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;two&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="323">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="324">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="325">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="326">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="327">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;three&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="328">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="329">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="330">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="331">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="332">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;four&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="333">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="334">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="335">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="336">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="337">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;five&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="338">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="339">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="340">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="341">
-            
-            
-
-            
-
-            <code class="ruby">          ],</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="342">
-            
-            
-
-            
-
-            <code class="ruby">        }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="343">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="344">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      let(:ap_data_2) do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="345">
-            
-            
-
-            
-
-            <code class="ruby">        {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="346">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">          &quot;wifiAccessPoints&quot; =&gt; [</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="347">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="348">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;one&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="349">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="350">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="351">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="352">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="353">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;two&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="354">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="355">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="356">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="357">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="358">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;not_three&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="359">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="360">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="361">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="362">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="363">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;not_four&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="364">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="365">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="366">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="367">
-            
-            
-
-            
-
-            <code class="ruby">            {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="368">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;five&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="369">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="370">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="371">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="372">
-            
-            
-
-            
-
-            <code class="ruby">          ],</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="373">
-            
-            
-
-            
-
-            <code class="ruby">        }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="374">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="375">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &quot;calls the API when cache threshold no met&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="376">
+          <li class="covered" data-hits="1" data-linenumber="202">
             <span class="hits">1</span>
             
 
@@ -5969,7 +4055,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="377">
+          <li class="never" data-hits="" data-linenumber="203">
             
             
 
@@ -5980,7 +4066,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="378">
+          <li class="never" data-hits="" data-linenumber="204">
             
             
 
@@ -5991,7 +4077,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="379">
+          <li class="never" data-hits="" data-linenumber="205">
             
             
 
@@ -6002,7 +4088,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="380">
+          <li class="never" data-hits="" data-linenumber="206">
             
             
 
@@ -6013,7 +4099,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="381">
+          <li class="never" data-hits="" data-linenumber="207">
             
             
 
@@ -6024,7 +4110,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="382">
+          <li class="never" data-hits="" data-linenumber="208">
             
             
 
@@ -6035,7 +4121,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="383">
+          <li class="never" data-hits="" data-linenumber="209">
             
             
 
@@ -6046,7 +4132,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="384">
+          <li class="never" data-hits="" data-linenumber="210">
             
             
 
@@ -6057,13 +4143,1927 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="385">
+          <li class="never" data-hits="" data-linenumber="211">
             
             
 
             
 
             <code class="ruby">            body: location.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="212">
+            
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="213">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="214">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(Rails.cache).to(receive(:read)).with(&quot;one,two,three,four,five&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="215">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data_similar[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="216">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="217">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="218">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &quot;calls the cache instead of API when additional APs, but threshold is met&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="219">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="220">
+            
+            
+
+            
+
+            <code class="ruby">          .with(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="221">
+            
+            
+
+            
+
+            <code class="ruby">            headers: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="222">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="223">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="224">
+            
+            
+
+            
+
+            <code class="ruby">            body: ap_data.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="225">
+            
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="226">
+            
+            
+
+            
+
+            <code class="ruby">          .to_return(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="227">
+            
+            
+
+            
+
+            <code class="ruby">            status: 200,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="228">
+            
+            
+
+            
+
+            <code class="ruby">            body: location.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="229">
+            
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="230">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="231">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(Rails.cache).to(receive(:read)).with(&quot;one,two,three,four,five&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="232">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data_similar_2[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="233">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="234">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="235">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &quot;calls the cache instead of API when additional APs, but threshold is met&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="236">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="237">
+            
+            
+
+            
+
+            <code class="ruby">          .with(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="238">
+            
+            
+
+            
+
+            <code class="ruby">            headers: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="239">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="240">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="241">
+            
+            
+
+            
+
+            <code class="ruby">            body: ap_data.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="242">
+            
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="243">
+            
+            
+
+            
+
+            <code class="ruby">          .to_return(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="244">
+            
+            
+
+            
+
+            <code class="ruby">            status: 200,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="245">
+            
+            
+
+            
+
+            <code class="ruby">            body: location.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="246">
+            
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="247">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="248">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(Rails.cache).to(receive(:read)).with(&quot;one,two,three,four,five&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="249">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data_similar_3[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="250">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="251">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="252">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="253">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    context &quot;With similar access point data that doesn&#39;t meet threshold&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="254">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      let(:scan_data) do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="255">
+            
+            
+
+            
+
+            <code class="ruby">        {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="256">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">          &quot;apscan_data&quot; =&gt; [</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="257">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="258">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;one&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="259">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="260">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="261">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="262">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="263">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;two&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="264">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="265">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="266">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="267">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="268">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;three&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="269">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="270">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="271">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="272">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="273">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;four&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="274">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="275">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="276">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="277">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="278">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;five&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="279">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="280">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="281">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="282">
+            
+            
+
+            
+
+            <code class="ruby">          ],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="283">
+            
+            
+
+            
+
+            <code class="ruby">        }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="284">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="285">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      let(:scan_data_similar) do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="286">
+            
+            
+
+            
+
+            <code class="ruby">        {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="287">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">          &quot;apscan_data&quot; =&gt; [</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="288">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="289">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;one&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="290">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="291">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="292">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="293">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="294">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;two&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="295">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="296">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="297">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="298">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="299">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;not_three&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="300">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="301">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="302">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="303">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="304">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;not_four&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="305">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="306">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="307">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="308">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="309">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;bssid&quot; =&gt; &quot;five&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="310">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="311">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;rssi&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="312">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="313">
+            
+            
+
+            
+
+            <code class="ruby">          ],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="314">
+            
+            
+
+            
+
+            <code class="ruby">        }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="315">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="316">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      let(:ap_data) do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="317">
+            
+            
+
+            
+
+            <code class="ruby">        {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="318">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">          &quot;wifiAccessPoints&quot; =&gt; [</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="319">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="320">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;one&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="321">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="322">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="323">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="324">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="325">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;two&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="326">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="327">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="328">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="329">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="330">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;three&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="331">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="332">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="333">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="334">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="335">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;four&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="336">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="337">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="338">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="339">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="340">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;five&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="341">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="342">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="343">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="344">
+            
+            
+
+            
+
+            <code class="ruby">          ],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="345">
+            
+            
+
+            
+
+            <code class="ruby">        }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="346">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="347">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      let(:ap_data_2) do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="348">
+            
+            
+
+            
+
+            <code class="ruby">        {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="349">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">          &quot;wifiAccessPoints&quot; =&gt; [</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="350">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="351">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;one&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="352">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="353">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="354">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="355">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="356">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;two&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="357">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="358">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="359">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="360">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="361">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;not_three&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="362">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="363">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="364">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="365">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="366">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;not_four&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="367">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="368">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="369">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="370">
+            
+            
+
+            
+
+            <code class="ruby">            {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="371">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;macAddress&quot; =&gt; &quot;five&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="372">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;channel&quot; =&gt; &quot;5&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="373">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;signalStrength&quot; =&gt; &quot;-35&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="374">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="375">
+            
+            
+
+            
+
+            <code class="ruby">          ],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="376">
+            
+            
+
+            
+
+            <code class="ruby">        }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="377">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="378">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="379">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &quot;calls the API when cache threshold no met&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="380">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="381">
+            
+            
+
+            
+
+            <code class="ruby">          .with(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="382">
+            
+            
+
+            
+
+            <code class="ruby">            headers: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="383">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="384">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="385">
+            
+            
+
+            
+
+            <code class="ruby">            body: ap_data.to_json</code>
           </li>
         </div>
       
@@ -6079,84 +6079,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="387">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">          stub2 = stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="388">
-            
-            
-
-            
-
-            <code class="ruby">          .with(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="389">
-            
-            
-
-            
-
-            <code class="ruby">            headers: {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="390">
-            
-            
-
-            
-
-            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="391">
-            
-            
-
-            
-
-            <code class="ruby">            },</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="392">
-            
-            
-
-            
-
-            <code class="ruby">            body: ap_data_2.to_json</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="393">
-            
-            
-
-            
-
-            <code class="ruby">          )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="394">
+          <li class="never" data-hits="" data-linenumber="387">
             
             
 
@@ -6167,7 +6090,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="395">
+          <li class="never" data-hits="" data-linenumber="388">
             
             
 
@@ -6178,13 +6101,90 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="396">
+          <li class="never" data-hits="" data-linenumber="389">
             
             
 
             
 
             <code class="ruby">            body: location.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="390">
+            
+            
+
+            
+
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="391">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        stub2 = stub_request(:post, &quot;https://www.googleapis.com/geolocation/v1/geolocate?key=secret&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="392">
+            
+            
+
+            
+
+            <code class="ruby">          .with(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="393">
+            
+            
+
+            
+
+            <code class="ruby">            headers: {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="394">
+            
+            
+
+            
+
+            <code class="ruby">              &quot;Content-Type&quot; =&gt; &quot;application/json&quot;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="395">
+            
+            
+
+            
+
+            <code class="ruby">            },</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="396">
+            
+            
+
+            
+
+            <code class="ruby">            body: ap_data_2.to_json</code>
           </li>
         </div>
       
@@ -6200,35 +6200,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="398">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="398">
+            
             
 
             
 
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
+            <code class="ruby">          .to_return(</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="399">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="399">
+            
             
 
             
 
-            <code class="ruby">        GeolocationApi.new.geolocate(scan_data_similar[&quot;apscan_data&quot;])</code>
+            <code class="ruby">            status: 200,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="400">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="400">
+            
             
 
             
 
-            <code class="ruby">        expect(stub2).to(have_been_requested)</code>
+            <code class="ruby">            body: location.to_json</code>
           </li>
         </div>
       
@@ -6239,12 +6239,56 @@
 
             
 
+            <code class="ruby">          )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="402">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="403">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        described_class.new.geolocate(scan_data_similar[&quot;apscan_data&quot;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="404">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(stub2).to(have_been_requested)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="405">
+            
+            
+
+            
+
             <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="402">
+          <li class="never" data-hits="" data-linenumber="406">
             
             
 
@@ -6255,7 +6299,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="403">
+          <li class="never" data-hits="" data-linenumber="407">
             
             
 
@@ -6266,7 +6310,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="404">
+          <li class="never" data-hits="" data-linenumber="408">
             
             
 

@@ -36,7 +36,7 @@ RSpec.describe(GeolocationApi) do
             status: 200,
             body: location.to_json
           )
-        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        described_class.new.geolocate(scan_data["apscan_data"])
         expect(stub).to(have_been_requested)
       end
     end
@@ -210,9 +210,9 @@ RSpec.describe(GeolocationApi) do
             status: 200,
             body: location.to_json
           )
-        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        described_class.new.geolocate(scan_data["apscan_data"])
         expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
-        GeolocationApi.new.geolocate(scan_data_similar["apscan_data"])
+        described_class.new.geolocate(scan_data_similar["apscan_data"])
       end
 
       it "calls the cache instead of API when additional APs, but threshold is met" do
@@ -227,9 +227,9 @@ RSpec.describe(GeolocationApi) do
             status: 200,
             body: location.to_json
           )
-        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        described_class.new.geolocate(scan_data["apscan_data"])
         expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
-        GeolocationApi.new.geolocate(scan_data_similar_2["apscan_data"])
+        described_class.new.geolocate(scan_data_similar_2["apscan_data"])
       end
 
       it "calls the cache instead of API when additional APs, but threshold is met" do
@@ -244,9 +244,9 @@ RSpec.describe(GeolocationApi) do
             status: 200,
             body: location.to_json
           )
-        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        described_class.new.geolocate(scan_data["apscan_data"])
         expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
-        GeolocationApi.new.geolocate(scan_data_similar_3["apscan_data"])
+        described_class.new.geolocate(scan_data_similar_3["apscan_data"])
       end
     end
 
@@ -399,8 +399,8 @@ RSpec.describe(GeolocationApi) do
             status: 200,
             body: location.to_json
           )
-        GeolocationApi.new.geolocate(scan_data["apscan_data"])
-        GeolocationApi.new.geolocate(scan_data_similar["apscan_data"])
+        described_class.new.geolocate(scan_data["apscan_data"])
+        described_class.new.geolocate(scan_data_similar["apscan_data"])
         expect(stub2).to(have_been_requested)
       end
     end
