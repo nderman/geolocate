@@ -18,7 +18,7 @@ class GeolocationApi
       ap_data = parse_scan(scan_data)
       response = Faraday.post(@url + @key, ap_data.to_json, "Content-Type" => "application/json")
       location = response.body
-      Rails.cache.write(key_arr.join(','), location)
+      Rails.cache.write(key_arr.join(","), location)
     end
     location
   end

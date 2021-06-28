@@ -99,6 +99,73 @@ RSpec.describe(GeolocationApi) do
           ],
         }
       end
+      let(:scan_data_similar_2) do
+        {
+          "apscan_data" => [
+            {
+              "bssid" => "one",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "two",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "three",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "four",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "five",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "six",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+          ],
+        }
+      end
+      let(:scan_data_similar_3) do
+        {
+          "apscan_data" => [
+            {
+              "bssid" => "one",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "two",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "three",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "not_four",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "five",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+          ],
+        }
+      end
       let(:ap_data) do
         {
           "wifiAccessPoints" => [
@@ -130,7 +197,8 @@ RSpec.describe(GeolocationApi) do
           ],
         }
       end
-      it "calls the cache instead of API when threshold is met" do
+
+      it "calls the cache instead of API when missing APs, but threshold is met" do
         stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
           .with(
             headers: {
@@ -145,6 +213,195 @@ RSpec.describe(GeolocationApi) do
         GeolocationApi.new.geolocate(scan_data["apscan_data"])
         expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
         GeolocationApi.new.geolocate(scan_data_similar["apscan_data"])
+      end
+
+      it "calls the cache instead of API when additional APs, but threshold is met" do
+        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
+        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
+        GeolocationApi.new.geolocate(scan_data_similar_2["apscan_data"])
+      end
+
+      it "calls the cache instead of API when additional APs, but threshold is met" do
+        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
+        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        expect(Rails.cache).to(receive(:read)).with("one,two,three,four,five")
+        GeolocationApi.new.geolocate(scan_data_similar_3["apscan_data"])
+      end
+    end
+
+    context "With similar access point data that doesn't meet threshold" do
+      let(:scan_data) do
+        {
+          "apscan_data" => [
+            {
+              "bssid" => "one",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "two",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "three",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "four",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "five",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+          ],
+        }
+      end
+      let(:scan_data_similar) do
+        {
+          "apscan_data" => [
+            {
+              "bssid" => "one",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "two",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "not_three",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "not_four",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+            {
+              "bssid" => "five",
+              "channel" => "5",
+              "rssi" => "-35",
+            },
+          ],
+        }
+      end
+      let(:ap_data) do
+        {
+          "wifiAccessPoints" => [
+            {
+              "macAddress" => "one",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "two",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "three",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "four",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "five",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+          ],
+        }
+      end
+      let(:ap_data_2) do
+        {
+          "wifiAccessPoints" => [
+            {
+              "macAddress" => "one",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "two",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "not_three",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "not_four",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+            {
+              "macAddress" => "five",
+              "channel" => "5",
+              "signalStrength" => "-35",
+            },
+          ],
+        }
+      end
+
+      it "calls the API when cache threshold no met" do
+        stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
+        stub2 = stub_request(:post, "https://www.googleapis.com/geolocation/v1/geolocate?key=secret")
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data_2.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
+        GeolocationApi.new.geolocate(scan_data["apscan_data"])
+        GeolocationApi.new.geolocate(scan_data_similar["apscan_data"])
+        expect(stub2).to(have_been_requested)
       end
     end
   end
