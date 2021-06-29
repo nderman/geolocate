@@ -27,9 +27,11 @@ Things you may want to cover:
 ## TODOS
 - [x] Load secrets from env variables
 - [x] auth
+- [x] auth specs
 - [ ] dockerize
 - [ ] update readme
     * running tests
     * running app
+- [ ] CI
 - [ ] error handling
 - [ ] "sad day" tests

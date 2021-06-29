@@ -11,7 +11,7 @@ RSpec.describe(GeolocateController, type: :controller) do
       @double_geolocation_api = double(GeolocationApi)
     end
 
-    context "successfully" do
+    context "With valid call" do
       let(:scan_params) do
         TestData.scan_data
       end
