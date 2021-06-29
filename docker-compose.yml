@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  geolocate:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    entrypoint: [ "rails", "s" ]
+    ports:
+    - "3000:3000"
+
+  geolocate_spec:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    entrypoint: [ "bundle", "exec", "rspec", "-fd" ]
+    command: [ "spec" ]

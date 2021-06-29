@@ -1,28 +1,45 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+## Running the app
+### Running with ruby
+In the root folder of the app run
+```
+gem install bundler
+bundle install
+```
+to run the app run
+```
+rails s
+```
+### Running with docker-compose
+In the root folder of the app run
+```
+docker-compose build
+```
+to run the app run
+```
+docker-compose run geolocate
+```
+## Running the specs
+### Running with bundler
+In the root folder of the app run
+```
+gem install bundler
+bundle install
+```
+to run the specs run
+```
+bundle exec rspec -fd spec
+```
+### Running with docker-compose
+In the root folder of the app run
+```
+docker-compose build
+```
+to run the specs
+```
+docker-compose run geolocate_spec
+```
 
 ## TODOS
 - [x] Load secrets from env variables
