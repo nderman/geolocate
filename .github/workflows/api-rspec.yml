@@ -1,6 +1,7 @@
 name: CI RSpec Tests
 
 on:
+  workflow_dispatch:
   push:
    paths:
    - 'app/**'
