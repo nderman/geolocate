@@ -67,9 +67,6 @@ RSpec.describe(GeolocationApi) do
       let(:ap_data) do
         TestData.ap_data
       end
-      let(:location) do
-        TestData.location
-      end
 
       it "retuns false" do
         stub = stub_request(:post, api_url + secret)
@@ -94,9 +91,6 @@ RSpec.describe(GeolocationApi) do
       end
       let(:ap_data) do
         TestData.ap_data
-      end
-      let(:location) do
-        TestData.location
       end
 
       it "retuns false" do
