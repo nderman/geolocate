@@ -1,6 +1,6 @@
 name: CI RSpec Tests
 
-on: [push, pull_request]
+on:
   push:
    paths:
    - 'app/**'
@@ -13,20 +13,20 @@ jobs:
     name: CI
     runs-on: ubuntu-latest
 
-steps:
-  - uses: actions/checkout@v1
-  - uses: actions/setup-ruby@v1
-    with:
-      ruby-version: 2.6.6
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.6
 
-  - name: Run bundle install
-    run: |
-      gem install bundler
-      bundle install --jobs 4 --retry 3
+      - name: Run bundle install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
 
-  - name: Build and test with rspec
-    env:
-      RAILS_ENV: test
-      PGHOST: localhost
-      PGUSER: postgres
-    run: bundle exec rspec spec
+      - name: Build and test with rspec
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: postgres
+        run: bundle exec rspec spec
