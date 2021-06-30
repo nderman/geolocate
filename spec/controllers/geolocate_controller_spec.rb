@@ -11,7 +11,7 @@ RSpec.describe(GeolocateController, type: :controller) do
       @double_geolocation_api = double(GeolocationApi)
     end
 
-    context "With valid call" do
+    context "With valid, succesful call" do
       let(:scan_params) do
         TestData.scan_data
       end
@@ -24,7 +24,7 @@ RSpec.describe(GeolocateController, type: :controller) do
 
       it "returns response status 200 on success" do
         allow(GeolocationApi).to(receive(:new).and_return(@double_geolocation_api))
-        allow(@double_geolocation_api).to(receive(:geolocate).with(scan_params["apscan_data"]))
+        allow(@double_geolocation_api).to(receive(:geolocate).with(scan_params["apscan_data"]).and_return(TestData.location))
         post :locate, params: scan_params
         expect(response.status).to(eq(200))
       end
@@ -34,6 +34,26 @@ RSpec.describe(GeolocateController, type: :controller) do
         allow(@double_geolocation_api).to(receive(:geolocate).with(scan_params["apscan_data"]).and_return(TestData.location))
         post :locate, params: scan_params
         expect(response.body).to(eq(TestData.location.to_json))
+      end
+    end
+
+    context "With failed call to google geolocate" do
+      let(:scan_params) do
+        TestData.scan_data
+      end
+
+      it "returns response status 200 on success" do
+        allow(GeolocationApi).to(receive(:new).and_return(@double_geolocation_api))
+        allow(@double_geolocation_api).to(receive(:geolocate).with(scan_params["apscan_data"])).and_return(false)
+        post :locate, params: scan_params
+        expect(response.status).to(eq(502))
+      end
+
+      it "returns the location on success for query" do
+        allow(GeolocationApi).to(receive(:new).and_return(@double_geolocation_api))
+        allow(@double_geolocation_api).to(receive(:geolocate).with(scan_params["apscan_data"]).and_return(false))
+        post :locate, params: scan_params
+        expect(response.body).to(eq("Upstream Error"))
       end
     end
   end

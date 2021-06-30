@@ -42,6 +42,78 @@ RSpec.describe(GeolocationApi) do
         described_class.new.geolocate(scan_data["apscan_data"])
         expect(stub).to(have_been_requested)
       end
+
+      it "retuns the locations data" do
+        stub = stub_request(:post, api_url + secret)
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 200,
+            body: location.to_json
+          )
+        result = described_class.new.geolocate(scan_data["apscan_data"])
+        expect(result).to(eq(location.to_json))
+      end
+    end
+
+    context "When making a call to google geolocate with invalid/no api key" do
+      let(:scan_data) do
+        TestData.scan_data
+      end
+      let(:ap_data) do
+        TestData.ap_data
+      end
+      let(:location) do
+        TestData.location
+      end
+
+      it "retuns false" do
+        stub = stub_request(:post, api_url + secret)
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 403,
+            body: "some error"
+          )
+        result = described_class.new.geolocate(scan_data["apscan_data"])
+        expect(result).to(eq(false))
+      end
+    end
+
+    context "When making a call to google with invalid payload" do
+      let(:scan_data) do
+        TestData.scan_data
+      end
+      let(:ap_data) do
+        TestData.ap_data
+      end
+      let(:location) do
+        TestData.location
+      end
+
+      it "retuns false" do
+        stub = stub_request(:post, api_url + secret)
+          .with(
+            headers: {
+              "Content-Type" => "application/json",
+            },
+            body: ap_data.to_json
+          )
+          .to_return(
+            status: 400,
+            body: "invalid payload"
+          )
+        result = described_class.new.geolocate(scan_data["apscan_data"])
+        expect(result).to(eq(false))
+      end
     end
 
     context "With similar access point data" do

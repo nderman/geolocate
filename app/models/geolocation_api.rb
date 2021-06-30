@@ -11,14 +11,17 @@ class GeolocationApi
   def geolocate(scan_data)
     key_arr = key_arr(scan_data)
     cache_key = check_cache(key_arr, @cache_threshold)
+    location = false
 
     if cache_key.present?
       location = Rails.cache.read(cache_key)
     else
       ap_data = parse_scan(scan_data)
       response = Faraday.post(@url + @key, ap_data.to_json, "Content-Type" => "application/json")
-      location = response.body
-      Rails.cache.write(key_arr.join(","), location)
+      if response.status == 200 
+        location = response.body 
+        Rails.cache.write(key_arr.join(","), location)
+      end
     end
     location
   end
