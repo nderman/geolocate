@@ -90,6 +90,6 @@ docker-compose run geolocate_spec
     * running app
 - [x] CI
 - [ ] error handling
-- [ ] "sad day" tests
+- [ ] input validation
 - [ ] Logging
 - [ ] Monitoring
