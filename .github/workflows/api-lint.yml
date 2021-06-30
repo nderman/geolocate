@@ -1,0 +1,25 @@
+name: CI Rubocop Lint
+
+on:
+  workflow_dispatch:
+  push:
+   paths:
+   - 'app/**'
+  pull_request:
+    paths:
+    - 'app/**'
+
+jobs:
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2 # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Lint with rubocop
+        run: bundle exec rubocop app
