@@ -32,8 +32,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
   gem 'simplecov', '~> 0.21.0'
-  gem "rubocop-shopify"
   gem 'rubocop-rspec',  '>= 1.38.0'
+  gem "rubocop-shopify"
   gem 'webmock', '>= 3.13.0'
 end
 

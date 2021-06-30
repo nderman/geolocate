@@ -18,7 +18,7 @@ docker-compose build
 ```
 to run the app run
 ```
-docker-compose run geolocate
+docker-compose run --service-ports geolocate
 ```
 ## Running the specs
 ### Running with bundler
@@ -45,8 +45,8 @@ docker-compose run geolocate_spec
 - [x] Load secrets from env variables
 - [x] auth
 - [x] auth specs
-- [ ] dockerize
-- [ ] update readme
+- [x] dockerize
+- [x] update readme
     * running tests
     * running app
 - [ ] CI

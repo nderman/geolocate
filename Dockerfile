@@ -18,3 +18,5 @@ RUN apk --update --upgrade add --no-cache --virtual .build-deps build-base sqlit
       && rm -rf ~/.gem \
       && chmod -R o+rwx /usr/local/bundle
 ADD . .
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
