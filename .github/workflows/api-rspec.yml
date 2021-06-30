@@ -26,8 +26,4 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Build and test with rspec
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: postgres
         run: bundle exec rspec spec
